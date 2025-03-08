@@ -1,0 +1,44 @@
+/* General styles */
+body {
+    margin: 0;
+    background: url('assets/random.gif') no-repeat center center;
+    background-size: cover;
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    cursor: url('assets/cursor.gif'), auto;
+    overflow: hidden;
+}
+
+/* Custom cursor */
+.custom-cursor {
+    position: fixed;
+    width: 86px;
+    height: 86px;
+    background: url('assets/cursor.gif') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* Resizable text */
+h1 {
+    text-align: center;
+    margin-top: 20vh;
+    font-size: 5rem;
+    transition: transform 0.2s ease-out;
+}
+
+#play-music {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: #00ff00;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+}
