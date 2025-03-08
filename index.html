@@ -21,14 +21,26 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 3vw;
+            font-size: 1.5vw;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .lower-left-text {
             position: absolute;
             bottom: 10px;
-            left: 10px;
+            left: 50px; /* Adjusted to make space for the image */
             font-size: 1.5vw;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .lower-left-image {
+            position: absolute;
+            bottom: 10px;
+            left: 10px; /* Place the image to the left of the text */
+            width: 50px; /* Adjust the size of the image */
+            height: 50px; /* Adjust the size of the image */
         }
 
         .main-content {
@@ -37,36 +49,72 @@
             align-items: center;
         }
 
-        .button {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            font-size: 1em;
-            text-decoration: none;
-            text-align: center;
+        .button-container {
             position: absolute;
+            top: 50%;
             left: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .button:hover {
-            background-color: #666;
+        .link-text {
+            color: white;
+            text-decoration: none;
+            font-size: 0.7em;
+            margin: 10px 0;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .link-text:hover {
+            color: orange;
+        }
+
+        .typing {
+            display: inline;
         }
     </style>
 </head>
 <body>
-    <div class="top-right-text">
-        🟈☺⚐
+    <div class="top-right-text" id="top-right-text">
+        <span class="typing"></span>
     </div>
-    <div class="lower-left-text">
-        renh,2025
+    <img src="assets/snup.webp" alt="Icon" class="lower-left-image">
+    <div class="lower-left-text" id="lower-left-text">
+        <span class="typing"></span>
     </div>
     <div class="main-content">
-        <h1>inicio</h1>
-        <a href="grid.html" class="button">galería</a>
-        <a href="grid_small.html" class="button" style="top: 60px;">extra</a>
+        <h1>---inicio---</h1>
     </div>
+    <div class="button-container">
+        <a href="grid.html" class="link-text" id="link1"><span class="typing"></span></a>
+        <a href="grid_small.html" class="link-text" id="link2"><span class="typing"></span></a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElements = [
+                { id: "top-right-text", text: "⚑🟈☺♹" },
+                { id: "lower-left-text", text: "2025. ⓡⓔⓝ" },
+                { id: "link1", text: ">galería, camara." },
+                { id: "link2", text: ">extra" }
+            ];
+
+            textElements.forEach(element => {
+                let index = 0;
+                const typeEffect = () => {
+                    if (index < element.text.length) {
+                        document.getElementById(element.id).querySelector('.typing').innerHTML += element.text.charAt(index);
+                        index++;
+                        setTimeout(typeEffect, 50); // Adjust typing speed here
+                    }
+                };
+                typeEffect();
+            });
+        });
+    </script>
 </body>
 </html>
